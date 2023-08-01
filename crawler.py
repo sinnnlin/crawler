@@ -46,6 +46,10 @@ class Crawler():
         WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(('xpath', target)))
         select_element = Select(self.browser.find_element(By.XPATH, target))
         select_element.select_by_visible_text(option)
+    
+    def scroll_down(self):
+        time.sleep(10)
+        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         
     def switch_window(self,num=1):
         self.browser.switch_to.window(self.browser.window_handles[num])
